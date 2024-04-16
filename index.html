@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <button class = "esquerda" id = "verde" value = "verde"></button>
+    <button class = "esquerda" id = "verde" value = "verde" onclick="verde()"></button>
     <button class = "direita" id = "vermelho" value = "vermelho"></button>
     <button class = "cima" id = "azul" value = "azul"></button>
     <button class = "baixo" id = "amarelo" value = "amarelo"></button>
@@ -22,14 +22,49 @@
     let x = Math.floor((Math.random() * cores.length));
     var corRandom = [];
     corRandom.unshift(cores.at(x));
+    
+    var corEscolhida = [];
+    var contador = 1;
+    var contadorTentativa = 0;
 
+    function verde() {
+        corEscolhida.push(document.getElementById("verde").value);
+        if (corEscolhida[contadorTentativa] == corRandom[contadorTentativa]) {
+            if (contador == contadorTentativa) {
+                x = Math.floor((Math.random() * cores.length));
+                corRandom.push(cores.at(x));
+                contador++;
+                contadorTentativa = 0;
+                document.getElementById("random").innerHTML = corRandom;
+            }
+            else {
+                for (i = 0; i < contador; i++) {
+                    document.getElementById(corRandom[i]).style.opacity = "1";
+                    setTimeout(function() {
+                        document.getElementById(corRandom[i]).style.opacity = "0.4"; 
+                    }, 500);
+                }
+                contadorTentativa++;
+            }
+            
+        }
+        else {
+            document.getElementById("iniciar").style.display = "block";
+            corEscolhida = [];
+            x = Math.floor((Math.random() * cores.length));
+            corRandom.splice(0, corRandom.length, cores.at(x));
+            contador = 0;
+            contadorTentativa = 0;
+        }
+    }
+    document.getElementById("random").innerHTML = corRandom;
 
     function iniciar() {
         document.getElementById("iniciar").style.display = "none";
         document.getElementById(corRandom[0]).style.opacity = "1";
         setTimeout(function() {
             document.getElementById(corRandom[0]).style.opacity = "0.4"; 
-        }, 1000);
+        }, 500);
     }
 </script>
 </html>
