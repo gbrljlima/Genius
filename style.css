@@ -1,0 +1,51 @@
+body {
+    background-color: black;
+}
+button {
+    position: absolute;
+    display: flex;
+    height: 35vh;
+    width: 35vh;
+    cursor: pointer;
+    opacity: 0.4;
+}
+button.esquerda {
+    left: 20vh;
+    top: 33vh;
+    background-color: green;    
+}
+button.esquerda:hover {
+    transition: step-start ;
+    opacity: 1;
+    transform: scale(1.1);
+}
+button.direita {
+    right: 20vh;
+    top: 33vh;
+    background-color: red;    
+}
+button.direita:hover {
+    transition: step-start ;
+    opacity: 1;
+    transform: scale(1.1);
+}
+button.cima {
+    left: 42vw;
+    top: 0vh;
+    background-color: blue;    
+}
+button.cima:hover {
+    transition: step-start ;
+    opacity: 1;
+    transform: scale(1.1);
+}
+button.baixo {
+    left: 42vw;
+    top: 65vh;
+    background-color: yellow;    
+}
+button.baixo:hover {
+    transition: step-start ;
+    opacity: 1;
+    transform: scale(1.1);
+}
