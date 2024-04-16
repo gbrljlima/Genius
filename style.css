@@ -4,8 +4,8 @@ body {
 button {
     position: absolute;
     display: flex;
-    height: 35vh;
-    width: 35vh;
+    height: 33vh;
+    width: 33vh;
     cursor: pointer;
     opacity: 0.4;
 }
@@ -31,7 +31,6 @@ button.direita:hover {
 }
 button.cima {
     left: 42vw;
-    top: 0vh;
     background-color: blue;    
 }
 button.cima:hover {
@@ -45,6 +44,20 @@ button.baixo {
     background-color: yellow;    
 }
 button.baixo:hover {
+    transition: step-start ;
+    opacity: 1;
+    transform: scale(1.1);
+}
+button.iniciar {
+    top: 44%;
+    left: 42%;
+    height: 10vh;
+    width: 33vh;
+    align-items: center;
+    font-size: 40px;
+    justify-content: center;
+}
+button.iniciar:hover {
     transition: step-start ;
     opacity: 1;
     transform: scale(1.1);
