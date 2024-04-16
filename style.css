@@ -54,4 +54,5 @@ button.iniciar {
     align-items: center;
     font-size: 5vw;
     justify-content: center;
+    opacity: 1;
 }
