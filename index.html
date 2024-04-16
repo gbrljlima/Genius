@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src = script.js></script>
     <title>Genius</title>
 
 </head>
@@ -17,81 +18,4 @@
     <p style="color: white;" id="random"></p>
     <p style="color: white;" id="escolha"></p>
 </body>
-
-<script>
-    const cores = ["verde", "amarelo", "azul", "vermelho"];
-    let x = Math.floor((Math.random() * cores.length));
-    var corRandom = [];
-    corRandom.unshift(cores.at(x));
-    
-    let botao = document.getElementById(corRandom[0]);
-    var corEscolhida = [];
-    var contador = 1;
-    var contadorTentativa = 0;
-
-    
-    function acenderCor(i) {
-        if (i < contador) {
-            botao = document.getElementById(corRandom[i]);
-            setTimeout(function() {
-                botao.classList.add("active");
-            }, 300);
-            setTimeout(function() {
-                botao.classList.remove("active");
-                acenderCor(i + 1);
-            }, 1000);
-        }
-    }
-    function logicaBotao() {
-        if (corEscolhida[contadorTentativa] == corRandom[contadorTentativa]) {
-            document.getElementById("escolha").innerHTML = corEscolhida;
-            contadorTentativa++;
-            if (contador == contadorTentativa) {
-                x = Math.floor((Math.random() * cores.length));
-                corRandom.push(cores.at(x));
-                acenderCor(0);
-                contador++;
-                contadorTentativa = 0;
-                corEscolhida = [];
-                document.getElementById("random").innerHTML = corRandom;
-            }         
-        }
-        else {
-            document.getElementById("iniciar").style.display = "block";
-            corEscolhida = [];
-            x = Math.floor((Math.random() * cores.length));
-            corRandom.splice(0, corRandom.length, cores.at(x));
-            contador = 1;
-            contadorTentativa = 0;
-            document.getElementById("random").innerHTML = corRandom;
-        }
-    }
-    
-    function verde() {
-        corEscolhida.push(document.getElementById("verde").value);
-        logicaBotao();
-    }
-    function amarelo() {
-        corEscolhida.push(document.getElementById("amarelo").value);
-        logicaBotao();
-    }
-    function azul() {
-        corEscolhida.push(document.getElementById("azul").value);
-        logicaBotao();
-    }
-    function vermelho() {
-        corEscolhida.push(document.getElementById("vermelho").value);
-        logicaBotao();
-    }
-    
-    document.getElementById("random").innerHTML = corRandom;
-
-    function iniciar() {
-        document.getElementById("iniciar").style.display = "none";
-        botao.classList.add("active");
-        setTimeout(function() {
-            botao.classList.remove("active");
-        }, 500);
-    }
-</script>
 </html>
