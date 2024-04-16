@@ -13,7 +13,23 @@
     <button class = "direita" id = "vermelho" value = "vermelho"></button>
     <button class = "cima" id = "azul" value = "azul"></button>
     <button class = "baixo" id = "amarelo" value = "amarelo"></button>
-    <button class = "iniciar">Iniciar</button>
+    <button class = "iniciar" id = "iniciar" onclick="iniciar()">Iniciar</button>
+    <p style="color: white;" id="random"></p>
 </body>
 
+<script>
+    const cores = ["verde", "amarelo", "azul", "vermelho"];
+    let x = Math.floor((Math.random() * cores.length));
+    var corRandom = [];
+    corRandom.unshift(cores.at(x));
+
+
+    function iniciar() {
+        document.getElementById("iniciar").style.display = "none";
+        document.getElementById(corRandom[0]).style.opacity = "1";
+        setTimeout(function() {
+            document.getElementById(corRandom[0]).style.opacity = "0.4"; 
+        }, 1000);
+    }
+</script>
 </html>
