@@ -10,11 +10,12 @@
 </head>
 <body>
     <button class = "esquerda" id = "verde" value = "verde" onclick="verde()"></button>
-    <button class = "direita" id = "vermelho" value = "vermelho"></button>
-    <button class = "cima" id = "azul" value = "azul"></button>
-    <button class = "baixo" id = "amarelo" value = "amarelo"></button>
+    <button class = "direita" id = "vermelho" value = "vermelho" onclick="vermelho()"></button>
+    <button class = "cima" id = "azul" value = "azul" onclick="azul()"></button>
+    <button class = "baixo" id = "amarelo" value = "amarelo" onclick="amarelo()"></button>
     <button class = "iniciar" id = "iniciar" onclick="iniciar()">Iniciar</button>
     <p style="color: white;" id="random"></p>
+    <p style="color: white;" id="escolha"></p>
 </body>
 
 <script>
@@ -27,36 +28,56 @@
     var contador = 1;
     var contadorTentativa = 0;
 
-    function verde() {
-        corEscolhida.push(document.getElementById("verde").value);
+    function logicaBotao() {
+        
         if (corEscolhida[contadorTentativa] == corRandom[contadorTentativa]) {
+            document.getElementById("escolha").innerHTML = corEscolhida;
+            contadorTentativa++;
             if (contador == contadorTentativa) {
                 x = Math.floor((Math.random() * cores.length));
                 corRandom.push(cores.at(x));
+                for (let i = 0; i < contador; i++) {
+                    document.getElementById(corRandom[i]).style.opacity = "1";
+                    (function(i) {
+                        setTimeout(function() {
+                            document.getElementById(corRandom[i]).style.opacity = "0.4"; 
+                        }, 1000);
+                    })(i);
+                }
                 contador++;
                 contadorTentativa = 0;
+                corEscolhida = [];
                 document.getElementById("random").innerHTML = corRandom;
-            }
-            else {
-                for (i = 0; i < contador; i++) {
-                    document.getElementById(corRandom[i]).style.opacity = "1";
-                    setTimeout(function() {
-                        document.getElementById(corRandom[i]).style.opacity = "0.4"; 
-                    }, 500);
-                }
-                contadorTentativa++;
-            }
-            
+            }         
         }
         else {
             document.getElementById("iniciar").style.display = "block";
             corEscolhida = [];
             x = Math.floor((Math.random() * cores.length));
             corRandom.splice(0, corRandom.length, cores.at(x));
-            contador = 0;
+            contador = 1;
             contadorTentativa = 0;
+            document.getElementById("random").innerHTML = corRandom;
         }
     }
+    
+    function verde() {
+        corEscolhida.push(document.getElementById("verde").value);
+        logicaBotao();
+    }
+    function amarelo() {
+        corEscolhida.push(document.getElementById("amarelo").value);
+        logicaBotao();
+    }
+    function azul() {
+        corEscolhida.push(document.getElementById("azul").value);
+        logicaBotao();
+    }
+    function vermelho() {
+        corEscolhida.push(document.getElementById("vermelho").value);
+        logicaBotao();
+    }
+    
     document.getElementById("random").innerHTML = corRandom;
 
     function iniciar() {
