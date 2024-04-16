@@ -24,6 +24,7 @@
     var corRandom = [];
     corRandom.unshift(cores.at(x));
     
+    let botao = document.getElementById(corRandom[0]);
     var corEscolhida = [];
     var contador = 1;
     var contadorTentativa = 0;
@@ -31,17 +32,17 @@
     
     function acenderCor(i) {
         if (i < contador) {
+            botao = document.getElementById(corRandom[i]);
             setTimeout(function() {
-                document.getElementById(corRandom[i]).style.opacity = "1";
+                botao.classList.add("active");
             }, 300);
             setTimeout(function() {
-                document.getElementById(corRandom[i]).style.opacity = "0.4";
+                botao.classList.remove("active");
                 acenderCor(i + 1);
             }, 1000);
         }
     }
     function logicaBotao() {
-        
         if (corEscolhida[contadorTentativa] == corRandom[contadorTentativa]) {
             document.getElementById("escolha").innerHTML = corEscolhida;
             contadorTentativa++;
@@ -87,9 +88,9 @@
 
     function iniciar() {
         document.getElementById("iniciar").style.display = "none";
-        document.getElementById(corRandom[0]).style.opacity = "1";
+        botao.classList.add("active");
         setTimeout(function() {
-            document.getElementById(corRandom[0]).style.opacity = "0.4"; 
+            botao.classList.remove("active");
         }, 500);
     }
 </script>
