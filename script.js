@@ -35,14 +35,14 @@
                 contadorTentativa = 0;
                 corEscolhida = [];
             }
-            document.getElementById("random").innerHTML = "Pontuação: " + pontuacao;         
+            document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontuacao;         
         }
         else {
             if (pontuacao > record) {
                 record = pontuacao;
-                document.getElementById("escolha").innerHTML = "Melhor pontuação: " + record;
+                document.getElementById("melhorPontuacao").innerHTML = "Melhor pontuação: " + record;
             }
-            document.getElementById("iniciar").style.display = "block";
+            document.getElementById("iniciar").style.display = "flex";
             corEscolhida = [];
             x = Math.floor((Math.random() * cores.length));
             corRandom.splice(0, corRandom.length, cores.at(x));
@@ -77,4 +77,9 @@
         setTimeout(function() {
             botao.classList.remove("active");
         }, 500);
+        let botoes = document.getElementsByClassName("botao");
+        for (let i = 0; i < botoes.length; i++) {
+            botoes[i].disabled = false;
+            botoes[i].style.cursor = "pointer";
+        }
     }
